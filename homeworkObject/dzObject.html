@@ -6,33 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-    
-        // function Сlient(name, account, money) {
-        //     //Ті властивості, які у об"єктів можуть бути різні
-        //     this.name = name
-        //     this.account = account
-        //     this.money = parseFloat(money)
-        // }
-        // //----------- Описуємо властивості, які у всіх об"єктів однакові
-        // Сlient.prototype.getMoney = function (amount) {
-        //     if (amount <= this.money) {
-        //         this.money - amount
-        //         return true
-        //     }
-        //     else
-        //         return false
-        // }
-        // Сlient.prototype.putMoney = function (amount) {
-        //     this.money += amount
-        // }
-        // Сlient.prototype.toString = function () {
-        //     return `${this.name} - ${this.money}`
-        // }
-        // //-------------------------
-        // const cl1 = new Сlient('Ivanov I.I.', 'sdsd232edsd', '30000')
-        // document.write(cl1 + '<br>')
-        // cl1.putMoney(500)
-        // document.write(cl1 + '<br>')
         //         <!-- Задача. Створити об’єкт «Авто». 
         // Авто		
         // Поля(властивості)	Марка
@@ -45,53 +18,54 @@
         // Додавання пасажирів
         // Висадка пасажирів -->
 
-
+        //властивості обєкта,які можуть бути різні
         function Cars(brand, tankSize, availableLiters, seat, passengers) {
             this.brand = brand
-                this.tankSize = tankSize
-                this.liters =availableLiters
-                this.seat = seat
-                this.passengers =passengers
+            this.tankSize = tankSize
+            this.liters = parseFloat(availableLiters)
+            this.seat = seat
+            this.passengers = parseInt(passengers)
 
         }
+        //перевожу у стрінг
+        Cars.prototype.toString = function () {
+            return `${this.brand},${this.tankSize},${this.liters},${this.seat},${this.passengers}`
+        }
+        //рахуємо літри після заправки
         Cars.prototype.gasStation = function (liter) {
             if (liter < this.tankSize - this.liters) {
-                return liter + this.liters
+                this.liters += liter
+                return this.liters
             }
             else return false
         }
-        Cars.prototype.valueOf = function () {
-            return this.passengers
-        }
+        //рахую пасажирів після їх додавання
         Cars.prototype.addPassenger = function (numberPassengerAdd) {
             for (let i = 0; i < this.seat.length; i++) {
                 if (numberPassengerAdd <= this.seat - this.passengers)
-                    numberPassengerAdd++
-                return true
+                    this.passengers += numberPassengerAdd
+                return this.passengers
             }
             return false
 
         }
-        Cars.prototype.unloadingPassenger = function (numberPassengerAdd) {
-            for (let i = 0; i < this.passengers.length; i++) {
-                if (numberPassengerAdd >= this.passengers) {
-                    numberPassengerAdd--
-                    return true
-                }
-                return false
+        //рахую пасажирів після їх виходу
+        Cars.prototype.unloadingPassenger = function (minusPass) {
+            if (minusPass <= this.passengers) {
+                this.passengers -= minusPass
+                return this.passengers
             }
+            else return false
         }
-
-        let result = new Cars ('Mersedes', 80, 20, 5, 2)
-        document.write(result +'<br>')
-        result.gasStation(30)
-        document.write(result + '<br>')
-        result.valueOf()
-        document.write(result + '<br>')
-        result.addPassenger(2)
-        document.write(result + '<br>')
-        result.unloadingPassenger(1)
-        document.write(result + '<br>')
+        //вивожу результат
+        let result = new Cars('mersedes', '80', '20', '5', ' 2')
+        document.write('Марка,розмір бака,кількість наявних літрів,кількість місць,кількість пасажирів  =' + result + '<br>')
+        let res2 = result.gasStation(30)
+        document.write('Кількість літрів після заправки =' + res2 + '<br>')
+        let addRes = result.addPassenger(2)
+        document.write('Кількість пасажирів після їх збільшення=' + addRes + '<br>')
+        let unloadingRes = result.unloadingPassenger(1)
+        document.write('Кількість пасажирів після їх виходу = ' + unloadingRes + '<br>')
 
     </script>
 </head>
