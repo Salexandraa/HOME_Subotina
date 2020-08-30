@@ -13,92 +13,186 @@
         // Методи	Генерування прикладу (метод випадковим чином визначає друге число, перше число фіксоване)
         // Перевірка правильності вказаної відповіді
         // render
-        class MultChecker {
-            constructor(multTableBy) {
-                this.multTableBy = multTableBy
-                this.rightAnswer = 0
-                this.wrongAnswer = 0
+        // class MultChecker {
+        //     constructor(multTableBy) {
+        //         this.multTableBy = multTableBy
+        //         this.rightAnswer = 0
+        //         this.wrongAnswer = 0
+        //     }
+        //     getRandomNumber() {
+        //         return Math.floor(1 + Math.random() * (10 - 1 + 1))
+        //     }
+        //     onAnswer() {
+        //         const answ = parseFloat(this.inputAnswer.value)
+        //     }
+        //     onCheckClick() {
+        //         const span = this.span
+        //         const random = this.span3
+        //         const a = this.inputAnswer.value
+        //         if (span * random == a)
+        //             return this.rightAnswer++
+        //         else return this.wrongAnswer++
+        //         // if (multTable * randomNumber == this.userSum)
+        //         //     this.rightAnswer++
+        //         // else this.wrongAnswer++
 
+        //         this.spanRight.innerText = this.rightAnswer
+        //         this.spanwWrong.innerText = this.wrongAnswer
+        //     }
+        //     render() {
+
+        //         const div = document.getElementById('container')
+        //         let div1 = document.createElement('div')
+        //         div1.innerText = 'Множник:'
+        //         const span = document.createElement('span')
+        //         span.innerText = this.multTableBy
+        //         div1.appendChild(span)
+
+        //         let span2 = document.createElement('span')
+        //         span2.innerHTML = '*'
+        //         div1.appendChild(span2)
+
+        //         let span3 = document.createElement('span')
+        //         span3.innerText = this.getRandomNumber()
+        //         div1.appendChild(span3)
+
+        //         let span4 = document.createElement('span')
+        //         span4.innerHTML = '='
+        //         div1.appendChild(span4)
+
+        //         let lbl = document.createElement('label')
+        //         this.inputAnswer = document.createElement('input')
+        //         this.inputAnswer.setAttribute('type', 'number')
+        //         // this.inputAnswer.value = '0'
+        //         lbl.appendChild(this.inputAnswer)
+        //         div1.appendChild(lbl)
+
+        //         div.appendChild(div1)
+
+        //         const divBtn = document.createElement('div')
+        //         const btn = document.createElement('button')
+        //         btn.innerText = 'Перевірити'
+        //         btn.onclick = this.onCheckClick()
+        //         divBtn.appendChild(btn)
+        //         div.appendChild(divBtn)
+        //         div.appendChild(divBtn)
+
+        //         let div2 = document.createElement('div')
+        //         div2.innerText = 'Кількість правильних відповідей:'
+        //         let spanRight = document.createElement('span')
+        //         div2.appendChild(spanRight)
+        //         div.appendChild(div2)
+
+        //         let div3 = document.createElement('div')
+        //         div3.innerText = 'Кількість не правильних відповідей:'
+        //         this.spanwWrong = document.createElement('span')
+        //         div3.appendChild(this.spanwWrong)
+        //         div.appendChild(div3)
+
+        //     }
+
+        // }
+        // window.onload = function () {
+        //     const trainer = new MultChecker(7)
+        //     trainer.render('trainer')
+        // }
+
+        //         Задача. Розробити клас «Бронювання автомобіля»
+        // Поля	Вартість одного дня
+        // Розмір знижки (знижка на кожен день після 10-го дня 5%)
+        // Методи	Визначення вартості
+        // render
+        const price = [500, 600, 1000]
+        class CarRental {
+            constructor(priceOneDay) {
+                this.priceOneDay = priceOneDay
+                this.sale = 5
             }
-            getRandomNumber() {
-                return (Math.floor(1 + Math.random() * (10 - 1 + 1)))
+            saleCar(){
+                const selValue =this.option
+                const option = parseInt(selValue.value)
+                let totalSum = price[option]
+                return price[selValue]/100*this.sale
             }
-            onCheckClick() {
-                let multTableBy = parseInt(this.inpNumber.value)
-                let randomNumber = parseInt(this.inpRandom.value)
-                const userAnswer = parseInt(this.inpAnswer.value)
-                const answ = multTableBy * randomNumber
-                if (answ === userAnswer) {
-                    this.spanRight.innerText = this.rightAnswer++
+            getTotalSum() {
+                const selValue =this.option
+                const option = parseInt(selValue.value)
+                let totalSum = price[option]
 
-                }
-                else this.spanwWrong.innerText = this.wrongAnswer++
-
-
-            }
-            render() {
-
-                const div = document.getElementById('container')
-                let div1 = document.createElement('div')
-                div1.innerText='Множник:'
-                const span = document.createElement('span')
-                span.innerText = this.multTableBy
-                div1.appendChild(span)
-                span2 = document.createElement('span')
-                span2.innerHTML="*"
-                div1.appendChild.span2
+                let inp = this.input
+                let inpValue = parseInt(inp.value)
+                let res=0
+                if(inpValue>=10){
+                let dayWithSale =  inpValue-parseInt('10')
                 
-                th = document.createElement('th')
-                let inpRandom = document.createElement('input')
-                inpRandom.setAttribute('type', 'number')
-                inpRandom.innerText = this.getRandomNumber
-                th.appendChild(inpRandom)
-                tr.appendChild(th)
-                th = document.createElement('th')
-                th.innerHTML = '='
-                tr.appendChild(th)
-                th = document.createElement('th')
-                let inpAnswer = document.createElement('input')
-                inpAnswer.setAttribute('type', 'number')
-                th.appendChild(inpAnswer)
-                tr.appendChild(th)
-                table.appendChild(tr)
-                div.appendChild(table)
+                return res = (totalSum*10)+(this.saleCar*dayWithSale)}
+                else
+                return res =  totalSum*inpValue
+                this.span.innerText = res
 
-                 let div1 = document.createElement('div')
+              
+                
+
+            }
+
+            render() {
+                const d =  document.getElementById('cont2')
+                const div = document.createElement('div')
+                const select = document.createElement('select')
+                this.option = document.createElement('option')
+                this.option.value='0'
+                this.option.innerText = 'Opel'
+                select.appendChild(this.option)
+                this.option = document.createElement('option')
+                this.option.value='1'
+                this.option.innerText = 'Kia'
+                select.appendChild(this.option)
+                 this.option = document.createElement('option')
+                this.option.value='2'
+                this.option.innerText = 'Mersedes'
+                select.appendChild(this.option)
+                div.appendChild(select)
+                d.appendChild(div)
+
+                const divLabel = document.createElement('div')
+                const label = document.createElement('label')
+                label.innerText = 'Кількість днів'
+                this.input = document.createElement('input')
+                this.input.setAttribute('type','number')
+                label.appendChild(this.input)
+                divLabel.appendChild(label)
+                d.appendChild(divLabel)
+
+                let divButton = document.createElement('div')
                 let button = document.createElement('button')
-                button.onclick = this.onCheckClick
-                div1.appendChild(button)
+                button.innerText = 'Вартість оренди'
+                button.onclick = this.getTotalSum.bind(this)
+                divButton.appendChild(button)
+                d.appendChild(divButton)
 
-                 let div2 = document.createElement('div')
-                div2.innerText = 'Кількість правильних відповідей:'
-                this.spanRight = document.createElement('span')
-                div2.appendChild(this.spanRight)
-                let div3 = document.createElement('div')
-                div3.innerText = 'Кількість не правильних відповідей:'
-                this.spanwWrong = document.createElement('span')
-                div3.appendChild(this.spanwWrong)
-
-
-
-
-
-
-
+                let divResult = document.createElement('div')
+                divResult.innerText = `Вартість оренди становить:`
+                this.span = document.createElement('span')
+                divResult.appendChild(this.span)
+                d.appendChild(divResult)
 
             }
 
         }
-        window.onload = function () {
-            const trainer = new MultChecker(7)
-            trainer.render('trainer')
+        window.onload=function(){
+        let carRental = new CarRental()
+        carRental.render(carRental)
+        
         }
 
     </script>
 </head>
 
 <body>
-    <div id="container">
+    <!-- <div id="container">
+
+    </div> -->
+    <div id="cont2">
 
     </div>
 
