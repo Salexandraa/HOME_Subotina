@@ -102,53 +102,80 @@
         // Розмір знижки (знижка на кожен день після 10-го дня 5%)
         // Методи	Визначення вартості
         // render
-        const price = [500, 600, 1000]
+        // const price = [500, 600, 1000]
         class CarRental {
             constructor(priceOneDay) {
-                this.priceOneDay = priceOneDay
-                this.sale = 5
+                //ціна за один день(різних авто)
+                this.priceOneDay = [500, 600, 1000]
+                //сума знижки
+                this.sale = parseFloat(5)
             }
-            saleCar(){
-                const selValue =this.option
-                const option = parseInt(selValue.value)
-                let totalSum = price[option]
-                return price[selValue]/100*this.sale
+            priceCar() {
+                //ціна зі знижкою
+                //беремо значення з option
+                //     const selValue =this.option
+                //     const option = parseInt(selValue.value)
+                //     //вибираємо конкретну ціну 
+                //   this.totalSum = parseFloat(this.priceOneDay[option])
+                //     //і рахуємо ціну оренди авто зі знижкою
+                //  return   parseFloat(this.totalSum/100*this.sale)
+                // }
+                let totalSum = 0
+                let opt = document.getElementsByName('car')
+
+                for (let i = 0; i < opt.length; i++) {
+                    if (opt[i].checked)
+                        totalSum = parseFloat(this.priceOneDay[i])
+                    return totalSum
+                }
             }
+            saleCar() {
+                let number = this.saleCar
+                //і рахуємо ціну оренди авто зі знижкою
+                return parseFloat(number / 100 * this.sale)
+            }
+
+
             getTotalSum() {
-                const selValue =this.option
-                const option = parseInt(selValue.value)
-                let totalSum = price[option]
+                // const selValue =this.option.value
+                // const option = parseInt(selValue.value)
+                // let totalSum = this.priceOneDay[option]
+                //беремо значення з інпута
 
-                let inp = this.input
-                let inpValue = parseInt(inp.value)
-                let res=0
-                if(inpValue>=10){
-                let dayWithSale =  inpValue-parseInt('10')
-                
-                return res = (totalSum*10)+(this.saleCar*dayWithSale)}
-                else
-                return res =  totalSum*inpValue
+                let inpValue = parseInt(this.input.value)
+                let ten = parseFloat('10')
+                let res = 0
+                if (inpValue >= ten) {//якщо значення з інпута більше за 10
+                    let dayWithSale = parseInt(inpValue - ten)//рахуємо скільки днів за 10
+                    //
+                    res = parseFloat((this.priceCar * ten) + (this.saleCar * dayWithSale))
+                }
+                else {
+                    res = parseFloat(this.priceCar * inpValue)
+                }
+
+
                 this.span.innerText = res
-
-              
-                
 
             }
 
             render() {
-                const d =  document.getElementById('cont2')
+                const d = document.getElementById('cont2')
                 const div = document.createElement('div')
                 const select = document.createElement('select')
                 this.option = document.createElement('option')
-                this.option.value='0'
+                this.option.value = '0'
+                this.option.setAttribute('name', 'car')
                 this.option.innerText = 'Opel'
                 select.appendChild(this.option)
                 this.option = document.createElement('option')
-                this.option.value='1'
+                this.option.value = '1'
+                this.option.setAttribute('name', 'car')
                 this.option.innerText = 'Kia'
                 select.appendChild(this.option)
-                 this.option = document.createElement('option')
-                this.option.value='2'
+                this.option = document.createElement('option')
+                this.option.value = '2'
+                this.option.setAttribute('name', 'car')
                 this.option.innerText = 'Mersedes'
                 select.appendChild(this.option)
                 div.appendChild(select)
@@ -158,7 +185,7 @@
                 const label = document.createElement('label')
                 label.innerText = 'Кількість днів'
                 this.input = document.createElement('input')
-                this.input.setAttribute('type','number')
+                this.input.setAttribute('type', 'number')
                 label.appendChild(this.input)
                 divLabel.appendChild(label)
                 d.appendChild(divLabel)
@@ -179,10 +206,10 @@
             }
 
         }
-        window.onload=function(){
-        let carRental = new CarRental()
-        carRental.render(carRental)
-        
+        window.onload = function () {
+            let carRental = new CarRental()
+            carRental.render(carRental)
+
         }
 
     </script>
