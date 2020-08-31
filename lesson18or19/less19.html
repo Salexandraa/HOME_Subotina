@@ -76,14 +76,17 @@
                 this.valueTitle = valueTitle
                 this.elementsCount = elementsCount
             }
-            getPricesArray(){
-                return this.addresses.map(row=>parseFloat(row.inpValueAddr.value))
-            } 
+            getPricesArray() {
+                return this.addresses.map(row => parseFloat(row.inpValueAddr.value))
+            }
             //доробити
-            getTitlesArray(){
+            getTitlesArray() {
+                return this.addresses.map(column => (column.inpTitleAddr.value))
+            }
+            getObjectsArray() {
+                return this.getPricesArray() + this.getTitlesArray()
 
             }
-            getObjectsArray(){}
             render(containerId) {
                 const container = document.getElementById(containerId)
                 const table = document.createElement('table')
@@ -122,13 +125,25 @@
         let tb1
         function onButtonClick() {
             alert(tb1.getPricesArray())
-  
+
         }
+        function onBtnClick() {
+            alert(tb1.getTitlesArray())
+        }
+        function onBtn3Click() {
+            alert(tb1.getObjectsArray())
+        }
+
         window.onload = function () {
-             tb1 = new InputTable('Назва', 'Ціна', 5)
+            tb1 = new InputTable('Назва', 'Ціна', 5)
             tb1.render('container')
             const btn = document.getElementById('btn')
             btn.onclick = onButtonClick
+            const btn2 = document.getElementById('btn2')
+            btn2.onclick = onBtnClick
+            const btn3 = document.getElementById('btn3')
+            btn3.onclick = onBtn3Click
+
         }
     </script>
 </head>
@@ -140,12 +155,19 @@
     <div id="container">
 
     </div>
-<button id="btn">
-    Отримати ціни товарів
-</button>
+    <button id="btn">
+        Отримати ціни товарів
+    </button>
+    <button id="btn2">
+        Отримати назви товарів
+
+    </button>
+    <button id="btn3">
+        Отримати назви і ціни товарів
+    </button>
     <div id="cont2">
 
-    </div> 
+    </div>
 </body>
 
 </html>
