@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        //цю задачу так і не змогла доробити
-        //порахувати суму прибутків вийшло 
-        // а податки не читає
         // //створюємо таблицю для введення років і прибутків
         function createTable1() {
             const year = parseInt(document.getElementById('year').value)
@@ -96,24 +93,7 @@
             const taxesPaid = document.getElementById('paid').innerText = taxInput
 
         }
-        //фільтр за розмірами заробітньої плати
-        function filter() {
-            const min = document.getElementById('min')
-            const max = document.getElementById('max')
-            const table = parseFloat(document.getElementById('table2').value)
-            const tr = document.getElementById('line')
-            const inp = parseFloat(table.getElementsByName('salary').value)
-
-            for (let i = 0; i < inp.length; i++) {
-
-                let m = inp[0]
-                if (inp[i] < m && inp[i] < max) {
-                    m = inp[i]
-                }
-
-            }
-
-        }
+    
 
         window.onload = function () {
             document.getElementById('year').onchange = createTable1
