@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //         ==========================
+        // Задача 1. Створити клас, що представляє прямокутник і має методи для знаходження площі,
+        //  периметру та масштабування.
+        // class Rectangle {
+        //     constructor(sideA = 0, sideB = 0) {
+        //         this.getA = function () {
+        //             return sideA
+        //         }
+        //         this.setA = function (value) {
+        //             if (value < 0)
+        //                 throw new Error('the value is incorrect')
+        //             sideA = value
+
+        //         }
+        //         this.getB = function () {
+        //             return sideB
+        //         }
+        //         this.setB = function (value) {
+        //             if (value < 0)
+        //                 throw new Error('the value is incorrect')
+        //             sideB = value
+
+        //         }
+        //         this.setA(sideA)
+        //         this.setB(sideB)
+        //     }
+        //     getArea() {
+        //         return this.getA() * this.getB()
+        //     }
+        //     getPerimetr() {
+        //         return 2 * (this.getA() * this.getB())
+        //     }
+        //     scale(multiplier) {
+        //         this.getA(this.getA() * multiplier)
+        //         this.setB(this.getB() * multiplier)
+        //     }
+
+        // }
+
+        // class UsingRectangle {
+        //     constructor() {
+        //         this.rect = new Rectangle()
+        //     }
+        //     setA() {
+        //         try {
+        //             const a = parseFloat(this.inpA.value)
+        //             this.rect.A = a
+        //         }
+        //         catch (e) {
+        //             alert('Вводьте коректні значення для А: ' + e.message)
+        //         }
+        //     }
+        //     setB() {
+        //         try {
+        //             const b = parseFloat(this.inpB.value)
+        //             this.rect.B = b
+        //         }
+        //         catch (e) {
+        //             alert('Вводьте коректні значення для B: ' + e.message)
+        //         }
+        //     }
+        //     perim() {
+        //         const p = this.rect.getPerimetr()
+        //         this.spanPerim.innerText = p
+        //     }
+        //     scale1() {
+        //         const s = this.rect.scale('5')
+        //         this.spanScale.innerText = s
+        //     }
+        //     area() {
+        //         const ar = this.rect.getArea()
+        //         this.spanArea.innerText = ar
+        //     }
+        //     render() {
+        //         const div = document.getElementById('container')
+        //         const table = document.createElement('table')
+        //         let tr = document.createElement('tr')
+        //         let td = document.createElement('td')
+        //         td.innerText = 'Side A'
+        //         tr.appendChild(td)
+        //         td = document.createElement('td')
+        //         this.inpA = document.createElement('input')
+        //         this.inpA.type = 'number'
+        //         td.appendChild(this.inpA)
+        //         let btn = document.createElement('button')
+        //         btn.innerText = 'set A'
+        //         btn.onclick = this.setA.bind(this)
+        //         td.appendChild(btn)
+        //         tr.appendChild(td)
+
+        //         table.appendChild(tr)
+
+        //         tr = document.createElement('tr')
+        //         td = document.createElement('td')
+        //         td.innerText = 'Side B'
+        //         tr.appendChild(td)
+        //         td = document.createElement('td')
+        //         this.inpB = document.createElement('input')
+        //         this.inpB.type = 'number'
+        //         td.appendChild(this.inpB)
+        //         btn = document.createElement('button')
+        //         btn.innerText = 'set B'
+        //         btn.onclick = this.setB.bind(this)
+        //         td.appendChild(btn)
+        //         tr.appendChild(td)
+
+        //         table.appendChild(tr)
+
+        //         tr = document.createElement('tr')
+        //         td = document.createElement('td')
+        //         btn = document.createElement('button')
+        //         btn.innerText = 'Perim'
+        //         btn.onclick = this.perim.bind(this)
+        //         td.appendChild(btn)
+        //         tr.appendChild(td)
+
+        //         td = document.createElement('td')
+        //         this.spanPerim = document.createElement('span')
+        //         td.appendChild(this.spanPerim)
+        //         tr.appendChild(td)
+        //         table.appendChild(tr)
+
+        //         tr = document.createElement('tr')
+        //         td = document.createElement('td')
+        //         btn = document.createElement('button')
+        //         btn.innerText = 'Scale'
+        //         btn.onclick = this.scale1.bind(this)
+        //         td.appendChild(btn)
+        //         tr.appendChild(td)
+        //         td = document.createElement('td')
+        //         this.spanScale = document.createElement('span')
+        //         td.appendChild(this.spanScale)
+        //         tr.appendChild(td)
+        //         table.appendChild(tr)
+
+        //         tr = document.createElement('tr')
+        //         td = document.createElement('td')
+        //         btn = document.createElement('button')
+        //         btn.innerText = 'Area'
+        //         btn.onclick = this.area.bind(this)
+        //         td.appendChild(btn)
+        //         tr.appendChild(td)
+        //         td = document.createElement('td')
+        //         this.spanArea = document.createElement('span')
+        //         td.appendChild(this.spanArea)
+        //         tr.appendChild(td)
+
+
+
+        //         table.appendChild(tr)
+        //         div.appendChild(table)
+
+        //     }
+        // }
+
+
+        // window.onload = function () {
+        //     const usRect = new UsingRectangle()
+        //     usRect.render('usRect')
+        // }
+        //         Задача 2. Створити клас Product, що представляє товар на складі
+        // поля:
+        // 	Назва товару
+        // 	Кількість одиниць
+        // 	Ціна одиниці
+        // методи:
+        // 	зменшення кількості товару
+        // 	збільшення кількості товару
+        // 	визначення вартості вказаної кількості товару
+        // 	нарахування вказаної знижки (у відсотках)
+        // 	визначення загальної вартості товару
+        // На основі цього класу визначити сумарну вартість усіх товарів, та нарахувати знижку на усі товари, ціна яких перевищує 1000 грн.
+
+        class Product {
+            constructor(nameProduct, number, price) {
+                this.getName = function () {
+                    return nameProduct
+                }
+                this.setName = function (name) {
+                    this.getName = name
+                }
+                this.getNumber = function () {
+                    return number
+                }
+                this.setNumber = function (value) {
+                    if (value < 0) {
+                        throw new Error('the value is incorrect')
+                        this.getNumber = value
+                    }
+                }
+                this.getPrice = function () {
+                    return price
+                }
+                this.setPrice = function (valuePrice) {
+                    if (valuePrice < 0) {
+                        throw new Error('the value is incorrect')
+                        this.getPrice = valuePrice
+                    }
+                }
+                this.setName(nameProduct)
+                this.setNumber(number)
+                this.setPrice(price)
+            }
+            // 	зменшення кількості товару
+            decrease(amount) {
+                return this.getNumber - amount
+            }
+            // 	збільшення кількості товару
+            increament(amount) {
+                return this.getNumber + amount
+            }
+
+            // 	визначення вартості вказаної кількості товару
+            costOfProduct() {
+                return this.getNumber * this.getPrice
+            }
+            // 	нарахування вказаної знижки (у відсотках)
+            discount(discount) {
+                return this.costOfProduct() / 100 * discount
+            }
+        }
+
+        class UsingProduct {
+            constructor() {
+                this.prod = new Product()
+            }
+
+            setName(){
+                try{
+                const n = parseFloat(this.inpName.value)
+                this.prod.name = a
+            }
+            catch(e)
+            {
+                alert('Вводьте коректні значення для Name: '+e.message)
+            }
+            }
+
+            setNum(){
+                try{
+                const num = parseFloat(this.inpNumber.value)
+                this.prod.number = num
+            }
+            catch(e)
+            {
+                alert('Вводьте коректні значення для Number: '+e.message)
+            }
+            }
+
+            setPrice(){
+                try{
+                const pric = parseFloat(this.inpPrice.value)
+                this.prod.name = pric
+            }
+            catch(e)
+            {
+                alert('Вводьте коректні значення для price: '+e.message)
+            }
+            }
+            // setSale(){
+            //     try{
+            //     const sal = parseFloat(this.inpSale.value)
+            //     this.prod.name = sal
+            // }
+            // catch(e)
+            // {
+            //     alert('Вводьте коректні значення для sale: '+e.message)
+            // }
+            // }
+  
+
+            cost(){
+                const c = this.prod.costOfProduct()
+                this.spanCost.innerText = p
+            }
+            sale(){
+                const s = this.prod.discount()
+                this.spanSale.innerText=s
+            }
+
+            render() {
+                const div = document.getElementById('product')
+                const table = document.createElement('table')
+                let tr = document.createElement('tr')
+                let td = document.createElement('td')
+                td.innerText = 'Назва товару'
+                tr.appendChild(td)
+                td=document.createElement('td')
+                this.inpName = document.createElement('input')
+                this.inpName.type = 'text'
+                td.appendChild(this.inpName)
+                tr.appendChild(td)
+                table.appendChild(tr)
+
+                tr = document.createElement('tr')
+                td = document.createElement('td')
+                td.innerText = 'Кількість одиниць'
+                tr.appendChild(td)
+                td=document.createElement('td')
+                this.inpNumber = document.createElement('input')
+                this.inpNumber.type = 'number'
+                td.appendChild(this.inpNumber)
+                tr.appendChild(td)
+                table.appendChild(tr)
+
+                tr = document.createElement('tr')
+                td = document.createElement('td')
+                td.innerText = 'Ціна одиниці'
+                tr.appendChild(td)
+                td=document.createElement('td')
+                this.inpPrice = document.createElement('input')
+                this.inpPrice.type = 'number'
+                td.appendChild(this.inpPrice)
+                tr.appendChild(td)
+                table.appendChild(tr)
+
+                // tr = document.createElement('tr')
+                // td = document.createElement('td')
+                // td.innerText = 'Знижка'
+                // tr.appendChild(td)
+                // td=document.createElement('td')
+                // this.іnpSale = document.createElement('input')
+                // this.inpSale.type = 'number'
+                // td.appendChild(this.inpSale)
+                // tr.appendChild(td)
+                // table.appendChild(tr)
+
+                tr = document.createElement('tr')
+                td = document.createElement('td')
+                btn = document.createElement('button')
+                btn.innerText = 'Розрахувати вартість'
+                btn.onclick = this.cost.bind(this)
+                td.appendChild(btn)
+                tr.appendChild(td)
+                 td = document.createElement('td')
+                 this.spanCost = document.createElement('span')
+                 td.appendChild(this.spanCost)
+                 tr.appendChild(td)
+                 table.appendChild(tr)
+
+                 tr = document.createElement('tr')
+                td = document.createElement('td')
+                btn = document.createElement('button')
+                btn.innerText = 'Нарахувати знижку'
+                btn.onclick = this.sale.bind(this)
+                td.appendChild(btn)
+                tr.appendChild(td)
+                 td = document.createElement('td')
+                 this.spanSale = document.createElement('span')
+                 td.appendChild(this.spanSale)
+                 tr.appendChild(td)
+                 table.appendChild(tr)
+
+
+            }
+        }
+        window.onload=function(){
+            const pr = new UsingProduct()
+            pr.render('pr')
+        }
+
+    </script>
+</head>
+
+<body>
+    <!-- <div id="container">
+
+    </div> -->
+    <div id="product">
+
+    </div>
+
+</body>
+
+</html>
