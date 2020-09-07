@@ -6,41 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
+        //Домашня по інкапсуляції
         //         ==========================
         // Задача 1. Створити клас, що представляє прямокутник і має методи для знаходження площі,
         //  периметру та масштабування.
         // class Rectangle {
         //     constructor(sideA = 0, sideB = 0) {
-        //         this.getA = function () {
-        //             return sideA
-        //         }
-        //         this.setA = function (value) {
-        //             if (value < 0)
-        //                 throw new Error('the value is incorrect')
-        //             sideA = value
+        //         Object.defineProperty(this, 'A', {
+        //             get: function () {
+        //                 return sideA
+        //             },
+        //             set: function (value) {
+        //                 if (value < 0)
+        //                     throw new Error('the value is incorrect')
+        //                 sideA = value
+        //             }
+        //         })
+        //         Object.defineProperty(this, 'B', {
+        //             get: function () {
+        //                 return sideB
+        //             },
+        //             set: function (value) {
+        //                 if (value < 0)
+        //                     throw new Error('the value is incorrect')
+        //                 sideB = value
 
-        //         }
-        //         this.getB = function () {
-        //             return sideB
-        //         }
-        //         this.setB = function (value) {
-        //             if (value < 0)
-        //                 throw new Error('the value is incorrect')
-        //             sideB = value
+        //             }
+        //         })
 
-        //         }
-        //         this.setA(sideA)
-        //         this.setB(sideB)
+        //         this.A = sideA
+        //         this.B = sideB
         //     }
         //     getArea() {
-        //         return this.getA() * this.getB()
+        //         return this.A * this.B
         //     }
         //     getPerimetr() {
-        //         return 2 * (this.getA() * this.getB())
+        //         return 2 * (this.A + this.B)
         //     }
         //     scale(multiplier) {
-        //         this.getA(this.getA() * multiplier)
-        //         this.setB(this.getB() * multiplier)
+        //        return this.A = parseFloat(this.A * multiplier)
+        //        return this.B = parseFloat(this.B * multiplier)
         //     }
 
         // }
@@ -72,7 +77,7 @@
         //         this.spanPerim.innerText = p
         //     }
         //     scale1() {
-        //         const s = this.rect.scale('5')
+        //         const s = this.rect.scale(this.input.value)
         //         this.spanScale.innerText = s
         //     }
         //     area() {
@@ -81,7 +86,7 @@
         //     }
         //     render() {
         //         const div = document.getElementById('container')
-        //         const table = document.createElement('table')
+        //         let table = document.createElement('table')
         //         let tr = document.createElement('tr')
         //         let td = document.createElement('td')
         //         td.innerText = 'Side A'
@@ -130,6 +135,10 @@
 
         //         tr = document.createElement('tr')
         //         td = document.createElement('td')
+        //         this.input = document.createElement('input')
+        //         td.appendChild(this.input)
+        //         tr.appendChild(td)
+        //         td = document.createElement('td')
         //         btn = document.createElement('button')
         //         btn.innerText = 'Scale'
         //         btn.onclick = this.scale1.bind(this)
@@ -164,68 +173,81 @@
 
         // window.onload = function () {
         //     const usRect = new UsingRectangle()
-        //     usRect.render('usRect')
+        //     usRect.render()
         // }
         //         Задача 2. Створити клас Product, що представляє товар на складі
         // поля:
-        // 	Назва товару
-        // 	Кількість одиниць
-        // 	Ціна одиниці
+        // 	Назва товару-
+        // 	Кількість одиниць-
+        // 	Ціна одиниці-
         // методи:
-        // 	зменшення кількості товару
-        // 	збільшення кількості товару
-        // 	визначення вартості вказаної кількості товару
-        // 	нарахування вказаної знижки (у відсотках)
+        // 	зменшення кількості товару-
+        // 	збільшення кількості товару-
+        // 	визначення вартості вказаної кількості товару-
+        // 	нарахування вказаної знижки (у відсотках)-
         // 	визначення загальної вартості товару
         // На основі цього класу визначити сумарну вартість усіх товарів, та нарахувати знижку на усі товари, ціна яких перевищує 1000 грн.
 
         class Product {
-            constructor(nameProduct, number, price) {
-                this.getName = function () {
-                    return nameProduct
-                }
-                this.setName = function (name) {
-                    this.getName = name
-                }
-                this.getNumber = function () {
-                    return number
-                }
-                this.setNumber = function (value) {
-                    if (value < 0) {
-                        throw new Error('the value is incorrect')
-                        this.getNumber = value
+            constructor(nameProduct, numberProduct, priceProduct) {
+                Object.defineProperty(this, 'Name', {
+                    get: function () {
+                        return nameProduct
+
+                    },
+                    set: function (name) {
+                        nameProduct = name
                     }
-                }
-                this.getPrice = function () {
-                    return price
-                }
-                this.setPrice = function (valuePrice) {
-                    if (valuePrice < 0) {
-                        throw new Error('the value is incorrect')
-                        this.getPrice = valuePrice
+                })
+                Object.defineProperty(this, 'Number', {
+                    get: function () {
+                        return numberProduct
+                    },
+                    set: function (value) {
+                        if (value < 0)
+                            throw new Error('the value is incorrect');
+                        numberProduct = value
+
                     }
-                }
-                this.setName(nameProduct)
-                this.setNumber(number)
-                this.setPrice(price)
+                })
+                Object.defineProperty(this, 'Price', {
+                    get: function () {
+                        return priceProduct
+                    },
+                    set: function (val) {
+                        if (val < 0)
+                            throw new Error('the value is incorrect')
+                        priceProduct = val
+                    }
+                })
+                this.Name = nameProduct
+                this.Number = numberProduct
+                this.Price = priceProduct
+
             }
             // 	зменшення кількості товару
             decrease(amount) {
-                return this.getNumber - amount
+                return this.Number - amount
             }
             // 	збільшення кількості товару
             increament(amount) {
-                return this.getNumber + amount
+                return this.Number + amount
             }
 
             // 	визначення вартості вказаної кількості товару
             costOfProduct() {
-                return this.getNumber * this.getPrice
+                return parseFloat(this.Number * this.Price)
             }
             // 	нарахування вказаної знижки (у відсотках)
             discount(discount) {
-                return this.costOfProduct() / 100 * discount
+                return parseFloat(this.costOfProduct() / 100 * discount)
             }
+            total() {
+                return this.costOfProduct() - this.discount()
+            }
+
+
+
         }
 
         class UsingProduct {
@@ -233,58 +255,50 @@
                 this.prod = new Product()
             }
 
-            setName(){
-                try{
-                const n = parseFloat(this.inpName.value)
-                this.prod.name = a
-            }
-            catch(e)
-            {
-                alert('Вводьте коректні значення для Name: '+e.message)
-            }
-            }
-
-            setNum(){
-                try{
-                const num = parseFloat(this.inpNumber.value)
-                this.prod.number = num
-            }
-            catch(e)
-            {
-                alert('Вводьте коректні значення для Number: '+e.message)
-            }
+            setName() {
+                try {
+                    const n = parseFloat(this.inpName.value)
+                    this.prod.Name = n
+                }
+                catch (e) {
+                    alert('Вводьте коректні значення для Name: ' + e.message)
+                }
             }
 
-            setPrice(){
-                try{
-                const pric = parseFloat(this.inpPrice.value)
-                this.prod.name = pric
+            setNum() {
+                try {
+                    const num = parseFloat(this.inpNumber.value)
+                    this.prod.Number = num
+                }
+                catch (e) {
+                    alert('Вводьте коректні значення для Number: ' + e.message)
+                }
             }
-            catch(e)
-            {
-                alert('Вводьте коректні значення для price: '+e.message)
-            }
-            }
-            // setSale(){
-            //     try{
-            //     const sal = parseFloat(this.inpSale.value)
-            //     this.prod.name = sal
-            // }
-            // catch(e)
-            // {
-            //     alert('Вводьте коректні значення для sale: '+e.message)
-            // }
-            // }
-  
 
-            cost(){
+            setPrice() {
+                try {
+                    const pric = parseFloat(this.inpPrice.value)
+                    this.prod.Price = pric
+                }
+                catch (e) {
+                    alert('Вводьте коректні значення для price: ' + e.message)
+                }
+            }
+
+
+            cost() {
                 const c = this.prod.costOfProduct()
-                this.spanCost.innerText = p
+                this.spanCost.innerText = c
             }
-            sale(){
-                const s = this.prod.discount()
-                this.spanSale.innerText=s
+            sale() {
+                const s = this.prod.discount(this.input.value)
+                this.spanSale.innerText = s
             }
+            totals() {
+                let sal = this.prod.total()
+                this.spanTotal.innerText = sal
+            }
+
 
             render() {
                 const div = document.getElementById('product')
@@ -293,10 +307,14 @@
                 let td = document.createElement('td')
                 td.innerText = 'Назва товару'
                 tr.appendChild(td)
-                td=document.createElement('td')
+                td = document.createElement('td')
                 this.inpName = document.createElement('input')
                 this.inpName.type = 'text'
                 td.appendChild(this.inpName)
+                let btn = document.createElement('button')
+                btn.innerText = 'Name'
+                btn.onclick = this.setName.bind(this)
+                td.appendChild(btn)
                 tr.appendChild(td)
                 table.appendChild(tr)
 
@@ -304,10 +322,14 @@
                 td = document.createElement('td')
                 td.innerText = 'Кількість одиниць'
                 tr.appendChild(td)
-                td=document.createElement('td')
+                td = document.createElement('td')
                 this.inpNumber = document.createElement('input')
                 this.inpNumber.type = 'number'
                 td.appendChild(this.inpNumber)
+                btn = document.createElement('button')
+                btn.innerText = 'Count'
+                btn.onclick = this.setNum.bind(this)
+                td.appendChild(btn)
                 tr.appendChild(td)
                 table.appendChild(tr)
 
@@ -315,23 +337,16 @@
                 td = document.createElement('td')
                 td.innerText = 'Ціна одиниці'
                 tr.appendChild(td)
-                td=document.createElement('td')
+                td = document.createElement('td')
                 this.inpPrice = document.createElement('input')
                 this.inpPrice.type = 'number'
                 td.appendChild(this.inpPrice)
+                btn = document.createElement('button')
+                btn.innerText = 'Price'
+                btn.onclick = this.setPrice.bind(this)
+                td.appendChild(btn)
                 tr.appendChild(td)
                 table.appendChild(tr)
-
-                // tr = document.createElement('tr')
-                // td = document.createElement('td')
-                // td.innerText = 'Знижка'
-                // tr.appendChild(td)
-                // td=document.createElement('td')
-                // this.іnpSale = document.createElement('input')
-                // this.inpSale.type = 'number'
-                // td.appendChild(this.inpSale)
-                // tr.appendChild(td)
-                // table.appendChild(tr)
 
                 tr = document.createElement('tr')
                 td = document.createElement('td')
@@ -340,40 +355,65 @@
                 btn.onclick = this.cost.bind(this)
                 td.appendChild(btn)
                 tr.appendChild(td)
-                 td = document.createElement('td')
-                 this.spanCost = document.createElement('span')
-                 td.appendChild(this.spanCost)
-                 tr.appendChild(td)
-                 table.appendChild(tr)
+                td = document.createElement('td')
+                this.spanCost = document.createElement('span')
+                td.appendChild(this.spanCost)
+                tr.appendChild(td)
+                table.appendChild(tr)
 
-                 tr = document.createElement('tr')
+                tr = document.createElement('tr')
                 td = document.createElement('td')
                 btn = document.createElement('button')
                 btn.innerText = 'Нарахувати знижку'
                 btn.onclick = this.sale.bind(this)
                 td.appendChild(btn)
                 tr.appendChild(td)
-                 td = document.createElement('td')
-                 this.spanSale = document.createElement('span')
-                 td.appendChild(this.spanSale)
-                 tr.appendChild(td)
-                 table.appendChild(tr)
+                td = document.createElement('td')
+                this.input = document.createElement('input')
+                td.appendChild(this.input)
+                tr.appendChild(td)
+                td = document.createElement('td')
+                let span = document.createElement('span')
+                span.innerText = 'Вартість знижки становить:'
+                td.appendChild(span)
+                this.spanSale = document.createElement('span')
+                td.appendChild(this.spanSale)
+                tr.appendChild(td)
+                table.appendChild(tr)
+
+                tr = document.createElement('tr')
+                td = document.createElement('td')
+                btn = document.createElement('button')
+                btn.innerText = 'Загальна сума'
+                btn.onclick = this.totals.bind(this)
+                td.appendChild(btn)
+                tr.appendChild(td)
+                td = document.createElement('td')
+                this.spanTotal = document.createElement('span')
+                td.appendChild(this.spanTotal)
+                tr.appendChild(td)
+                table.appendChild(tr)
+
+                div.appendChild(table)
 
 
             }
+
+
         }
-        window.onload=function(){
+
+        window.onload = function () {
             const pr = new UsingProduct()
-            pr.render('pr')
+            pr.render()
         }
 
     </script>
 </head>
 
 <body>
-    <!-- <div id="container">
+    <div id="container">
 
-    </div> -->
+    </div>
     <div id="product">
 
     </div>
