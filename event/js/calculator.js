@@ -38,6 +38,83 @@ class Calculator {
         }
         this.render
     }
+    //
+     // addNumber(number) {
+        //     //додавання кнопки в інпут
+        //     //якщо вже є крапка 
+        //     if (number === '.' && this.currentOperand.includes('.'))
+        //         return
+        //     this.currentOperand = this.currentOperand.toString() + number.toString()
+    
+        // }
+        // operation(operation) {
+        //     if (this.currentOperand === '')
+        //         return
+        //     if (this.previsiousOperand !== '') {
+        //         this.equal()//якщо попередній операнд не дорівнює пустій строці то виконуємо операцію з функції
+        //     }
+        //     this.operations = operation
+        //     this.previsiousOperand = this.currentOperand
+        //     this.currentOperand = ''
+    
+        // }
+        // equal() {
+        //     let equal
+        //     const prev = parseFloat(this.previsiousOperand)
+        //     const current = parseFloat(this.currentOperand)
+        //     if (isNaN(prev) || isNaN(current))
+        //         return
+        //     switch (this.operations) {
+        //         case '+':
+        //             computation = prev + current
+        //             break
+        //         case '-':
+        //             computation = prev - current
+        //             break
+        //         case '*':
+        //             computation = prev * current
+        //             break
+        //         case '/':
+        //             computation = prev / current
+        //             break
+        //         default:
+        //             return
+        //     }
+        //     this.currentOperand = equal//
+        //     this.operations = undefined//якщо операцію не знайдено
+        //     this.previsiousOperand = ''//минулий операнд дорівнює пустому значенню
+        // }
+    
+    
+        // updateDisplay() {//зберігає минулий введенний операнд
+        //     this.currentOperand.innerText = this.currentOperand
+        //     if (this.operations != null) {//якщо 
+        //         this.previsiousOperand.innerText = this.previsiousOperand
+        //             `${this.previsiousOperand} ${this.operations}`
+        //     }
+    
+    
+        // }
+    
+        // click(e) {
+        //     let input = document.getElementById('txt')
+        //     input.innerText =this.addNumber(e.target.innerText)
+        //     input.innerText = this.updateDisplay()
+    
+    
+        // }
+        // delete() {
+        //     let input = document.getElementById('txt')
+        //     //кнопка видалення на 1 🠈
+        //    input.value = input.
+        //    this.render
+            // clear() {
+    //     //кнопка очистки С
+    //     this.currentOperand = ''
+    //     this.previsiousOperand = ''
+    //     this.operation = undefined
+    // }
+
     render(conatinerId) {
         this.container = document.getElementById(conatinerId)
         this.container.innerHTML = ''
