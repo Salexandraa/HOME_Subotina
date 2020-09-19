@@ -249,6 +249,6 @@ class CalculatorAcion extends Calculator {
     }
 }
 window.onload = function () {
-    let calculator = new CalculatorAcion()
+    let calculator = new Calculator()
     calculator.render('calculator')
 }
