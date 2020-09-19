@@ -22,22 +22,21 @@ class Calculator {
 
     }
     addNumber(number) {
-        // let current = document.getElementById('spanCurr')
-        // let previsious = document.getElementById('spanPrev')
+        let current = document.getElementsByName('spanCurr')
+        let previsious = document.getElementsByName('spanPrev')
 
-        // this.currentOperand = current
-        // this.previsiousOperand = previsious
+        this.currentOperand = current
+        this.previsiousOperand = previsious
         //якщо крапка кнопка дор крапці тоді 
         if (number === '.' && this.currentOperand.includes('.'))
             return
         //повертаємо число в рядок і число
 
-        this.currentOperand = this.currentOperand.toString() + number.toString()
-
+        this.currentOperand = this.currentOperandText + number
     }
     updateDisplay() {
-        let current = document.getElementById('spanCurr')
-        let previsious = document.getElementById('spanPrev')
+        let current = document.getElementsByName('spanCurr')
+        let previsious = document.getElementsByName('spanPrev')
 
         this.currentOperand = current
         this.previsiousOperand = previsious
@@ -103,12 +102,12 @@ class Calculator {
         divSpan.style.height = '50px'
 
         this.spanPrevisious = document.createElement('span')
-        this.spanPrevisious.setAttribute('id', 'spanPrev')
+        this.spanPrevisious.setAttribute('name', 'spanPrev')
         this.spanPrevisious.innerText = ''
         divSpan.appendChild(this.spanPrevisious)
 
         this.spanCurrent = document.createElement('span')
-        this.spanCurrent.setAttribute('id', 'spanCurr')
+        this.spanCurrent.setAttribute('name', 'spanCurr')
         this.spanCurrent.innerText = ''
         divSpan.appendChild(this.spanCurrent)
 
@@ -120,7 +119,6 @@ class Calculator {
         this.table.setAttribute('border', '1px')
         this.table.style.textAlign = 'center'
         this.table.style.backgroundColor = 'skyblue'
-        this.table.setAttribute('name', 'tbl')
         this.table.addEventListener('click', this.click)
 
 
@@ -148,15 +146,18 @@ class Calculator {
         tr = document.createElement('tr')
         this.numberTd = document.createElement('td')
         this.numberTd.innerText = '1'
+        this.numberTd.setAttribute('name','tbl')
 
         tr.appendChild(this.numberTd)
 
         this.numberTd = document.createElement('td')
         this.numberTd.innerText = '2'
+        this.numberTd.setAttribute('name','tbl')
         tr.appendChild(this.numberTd)
 
         this.numberTd = document.createElement('td')
         this.numberTd.innerText = '3'
+        this.numberTd.setAttribute('name','tbl')
         tr.appendChild(this.numberTd)
 
         this.operation = document.createElement('td')
@@ -168,14 +169,17 @@ class Calculator {
         tr = document.createElement('tr')
         this.numberTd = document.createElement('td')
         this.numberTd.innerText = '4'
+        this.numberTd.setAttribute('name','tbl')
         tr.appendChild(this.numberTd)
 
         this.numberTd = document.createElement('td')
         this.numberTd.innerText = '5'
+        this.numberTd.setAttribute('name','tbl')
         tr.appendChild(this.numberTd)
 
         this.numberTd = document.createElement('td')
         this.numberTd.innerText = '6'
+        this.numberTd.setAttribute('name','tbl')
         tr.appendChild(this.numberTd)
 
         this.operation = document.createElement('td')
@@ -187,14 +191,17 @@ class Calculator {
         tr = document.createElement('tr')
         this.numberTd = document.createElement('td')
         this.numberTd.innerText = '7'
+        this.numberTd.setAttribute('name','tbl')
         tr.appendChild(this.numberTd)
 
         this.numberTd = document.createElement('td')
         this.numberTd.innerText = '8'
+        this.numberTd.setAttribute('name','tbl')
         tr.appendChild(this.numberTd)
 
         this.numberTd = document.createElement('td')
         this.numberTd.innerText = '9'
+        this.numberTd.setAttribute('name','tbl')
         tr.appendChild(this.numberTd)
 
         this.operation = document.createElement('td')
@@ -206,10 +213,12 @@ class Calculator {
         tr = document.createElement('tr')
         this.numberTd = document.createElement('td')
         this.numberTd.innerText = '.'
+        this.numberTd.setAttribute('name','tbl')
         tr.appendChild(this.numberTd)
 
         this.numberTd = document.createElement('td')
         this.numberTd.innerText = '0'
+        this.numberTd.setAttribute('name','tbl')
         tr.appendChild(this.numberTd)
 
         this.equalTd = document.createElement('td')
@@ -225,56 +234,56 @@ class Calculator {
 
 
 }
-
-// const numberTd = document.getElementsByName(this.numberTd)
-const numberTd = document.getElementsByName('tbl')
+window.onload=function () {
+    let calculator = new Calculator()
+    calculator.render('calculator') 
+    const numberTd = document.getElementsByName('tbl')
 const operat = document.getElementsByName('operations')
-const currentOperandText = document.getElementById('spanPrev')
-const previsiousOperandText = document.getElementById('spanCurr')
+const currentOperandText = document.getElementsByName('spanPrev')
+const previsiousOperandText = document.getElementsByName('spanCurr')
 const equalsTd = document.getElementsByName('equalTd')
 const deleteTd = document.getElementsByName('deleteTd')
 const clearBtn = document.getElementsByName('clearTd')
-
-window.onload=function () {
-    let calculator = new Calculator(currentOperandText,previsiousOperandText)
-    calculator.render('calculator') 
-    numberTd.forEach(tdNumber => {
-        tdNumber.addEventListener('click', () => {
-            calculator.addNumber(tdNumber.innerText)
-            calculator.updateDisplay()
-        })
-    })
-    
-    operat.forEach(tdOperat=>{
-        tdOperat.addEventListener('click',()=>{
-            calculator.operationChoose(tdOperat.innerText)
-            calculator.updateDisplay()
-        })
-    })
-    
-    equalsTd.forEach(tgEqual=>{
-        calculator.equal()
+numberTd.forEach(tdNumber => {
+    tdNumber.addEventListener('click', () => {
+        calculator.addNumber(tdNumber.innerText)
         calculator.updateDisplay()
     })
-    
-    clearBtn.forEach(clearb=>{
-        calculator.clear()
+})
+
+operat.forEach(tdOperat=>{
+    tdOperat.addEventListener('click',()=>{
+        calculator.operationChoose(tdOperat.innerText)
         calculator.updateDisplay()
     })
-    
-    
-    
-    deleteTd.forEach(btnDel=>{
-        calculator.delete()
-        calculator.updateDisplay()
-    })
-    
+})
+
+equalsTd.forEach(tgEqual=>{
+    calculator.equal()
+    calculator.updateDisplay()
+})
+
+clearBtn.forEach(clearb=>{
+    calculator.clear()
+    calculator.updateDisplay()
+})
 
 
+
+deleteTd.forEach(btnDel=>{
+    calculator.delete()
+    calculator.updateDisplay()
+})
 }
 
 
-let calculator = new Calculator(currentOperandText,previsiousOperandText)
+
+
+
+
+
+
+  
 
 
 
