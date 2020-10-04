@@ -1,45 +1,40 @@
 <template>
   <div id="app">
-    <my-baner imgSrc="https://zadari.com.ua/content/images/18/95899895444665.jpg"
-    title = "Elite Gifts"
-    clicksNumber = "1"
+    <bank-account />
+    <presentation-baner
+      caption="recreativ"
+      imgSrc="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSHBi0SQnuzMLJjqD56Mrs5Ii5_w1_-RwSv0A&usqp=CAU"
+      title="Соковити хурма"
     />
-    <baner-peach caption="recreativ"
-    advertising="Advertising network"
-    imgSrc="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxkswCC-Rgt-1_eCp4Tycq-qpMIY0b-p_e4Q&usqp=CAU"
-    title="Juicy peach" />
-
-    <weather-baner 
-    town="Uzhgorod"
-    date = "Today 09.00"
-    imgSrc="https://png.clipart.me/istock/previews/5014/50148626-thermometer-icon.jpg"
-    temperature="+18"
-    humidity="Humidity:97"
-    pleasure="Pleasure:748mm"
-    wind="Wind:0m/c"
+    <the-weather
+      town="Ужгород"
+      date="Сьогодні 09.00"
+      temperature="+18"
+      humidity="Вологість:97"
+      pleasure="Тиск:748mm"
+      wind="Вітер:0m/c"
     />
-
-      
-  <!-- <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   </div>
 </template>
 
 <script>
-import MyBaner from "./components/MyBaner"
-import BanerPeach from "./components/BanerPeach"
-import WeatherBaner from "./components/WeatherBaner"
+// import HelloWorld from './components/HelloWorld.vue'
+import BankAccount from "./components/BankAccount";
+import PresentationBaner from "./components/PresentationBaner";
+import TheWeather from "./components/TheWeather";
 
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-   MyBaner,
-   BanerPeach,
-   WeatherBaner
+    BankAccount,
+    PresentationBaner,
+    TheWeather,
 
-  }
-}
+  },
+
+  
+};
 </script>
 
 <style>
@@ -51,5 +46,4 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-
 </style>
