@@ -28,7 +28,7 @@
       {{ messageResult }}
     </div>
     <div v-if="authResult">
-      <img src="@/assets/smile.jpg" alt="=)" />
+      <img :src="image" alt="=)" />
     </div>
   </div>
 </template>
@@ -44,6 +44,10 @@ export default {
     loginsList: {
       type: Array,
       default: () => [],
+    },
+    image: {
+      type: URL,
+      default: 'assets/smile.jpg',
     },
   },
   data() {

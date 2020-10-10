@@ -2,7 +2,7 @@
   <div id="app">
       <login-homework 
       :logins-list = "myUserList"
-      image =  "@/assets/smile.jpg"/>
+      image =  "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ0_R735DH-6lKQ08A0MzDF34Lnrd2VJYQ-VA&usqp=CAU"/>
   </div>
 </template>
 
