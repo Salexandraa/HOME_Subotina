@@ -1,8 +1,7 @@
 <template>
   <div id="app">
-      <login-homework 
-      :logins-list = "myUserList"
-      image =  "@/assets/smile.jpg"/>
+      <login-homework :logins-list = "myUserList"
+      image="https://klike.net/uploads/posts/2019-09/1568622546_2.jpeg"/>
   </div>
 </template>
 

@@ -45,10 +45,10 @@ export default {
       type: Array,
       default: () => [],
     },
-    image: {
-      type: URL,
-      default: 'assets/smile.jpg',
-    },
+    image:{
+      type:URL,
+      default:"https://klike.net/uploads/posts/2019-09/1568622546_2.jpeg"
+    }
   },
   data() {
     return {
